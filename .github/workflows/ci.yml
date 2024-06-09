@@ -2,12 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [ 'macos-fix' ]
+    branches: [ 'main', 'develop' ]
   pull_request:
     branches: [ 'main', 'develop' ]
-    paths:
-    - '**.cs'
-    - '**.csproj'
+  workflow_run:
 
 env:
   DOTNET_NOLOGO: true
@@ -22,7 +20,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
 
     - name: Setup .NET Core 3.1.x
       uses: actions/setup-dotnet@v1
