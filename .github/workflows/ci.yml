@@ -60,7 +60,7 @@ jobs:
       run: dotnet test --configuration Release --no-build --verbosity normal --logger trx --results-directory "TestResults" src/Tesseract.sln
     
     - name: Upload dotnet test results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: dotnet-results
         path: TestResults
